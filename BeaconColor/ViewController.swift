@@ -20,25 +20,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     ]
     
     func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
-        println(beacons)
+        //println(beacons)
         
         //convert beacons to a a string
         let myBeacon: String = beacons.description
         let myBeaconArr = myBeacon.componentsSeparatedByString(",")
-        println(myBeaconArr[0])
-        println(myBeaconArr[1])
-        println(myBeaconArr[2])
-        println(myBeaconArr[3])
-        println(myBeaconArr[4])
+        //println(myBeaconArr[0])
+        //println(myBeaconArr[1])
+        //println(myBeaconArr[2])
+        //println(myBeaconArr[3])
+        //println(myBeaconArr[4])
         
+        //test
         //turn string into a dictionary
         var beaconDic: [String: String] = ["UUID": myBeaconArr[0], "Major": myBeaconArr[1], "Minor": myBeaconArr[2], "Proximity": myBeaconArr[3], "RSSI": myBeaconArr[4]]
         
-        //var jsonError: NSError?
-        //let decodedJSON = NSJSONSerialization.JSONObjectWithData(beaconDic, options: nil, error: &jsonError)
-        //if !(jsonError != nil) {
-        //    println(decodedJSON["UUID"])
-        //}
+        var jsonError: NSError?
+        let decodedJSON = NSJSONSerialization.dataWithJSONObject(beaconDic, options: nil, error: &jsonError)
+        if !(jsonError != nil) {
+            println(decodedJSON)
+        }
 
         
         //let data: NSData = beaconString
