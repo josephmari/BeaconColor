@@ -20,9 +20,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     ]
     
     func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
-        //println(beacons)
-
+        println(beacons)
         
+        //convert beacons to a a string
         let myBeacon: String = beacons.description
         let myBeaconArr = myBeacon.componentsSeparatedByString(",")
         println(myBeaconArr[0])
@@ -31,17 +31,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         println(myBeaconArr[3])
         println(myBeaconArr[4])
         
+        //turn string into a dictionary
         var beaconDic: [String: String] = ["UUID": myBeaconArr[0], "Major": myBeaconArr[1], "Minor": myBeaconArr[2], "Proximity": myBeaconArr[3], "RSSI": myBeaconArr[4]]
         
-        
-        var jsonError: NSError?
-        let decodedJSON = NSJSONSerialization.JSONObjectWithData(beaconDic, options: nil, error: &jsonError)
-        if !(jsonError != nil) {
-            println(decodedJson["UUID"])
-        }
+        //var jsonError: NSError?
+        //let decodedJSON = NSJSONSerialization.JSONObjectWithData(beaconDic, options: nil, error: &jsonError)
+        //if !(jsonError != nil) {
+        //    println(decodedJSON["UUID"])
+        //}
 
-
-    
         
         //let data: NSData = beaconString
         //var jsonError: NSError?
